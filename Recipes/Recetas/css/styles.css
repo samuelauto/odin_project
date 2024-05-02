@@ -1,0 +1,39 @@
+.container{
+    background-color: hsl(65, 15%, 68%);
+    width: 100%;
+    margin: auto;
+}
+
+h1{
+    color: #000000;
+    background-color: aliceblue;
+    text-align: center;
+    font-size: 100px;
+
+}
+
+h2{
+    color: whitesmoke;
+    font-size: 50px;
+}
+
+p{
+    color:black;
+    font-size: 25px;
+    font-weight: normal;
+    line-height: 1.6em;
+}
+
+body{
+    border-radius: 5px;   
+}
+
+.resize{
+    font-size: 60px;
+    border-bottom-style:inset;
+    border-block: 10px inset #102059;
+}
+
+.images{
+    text-align: center;
+}

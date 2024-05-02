@@ -1,0 +1,27 @@
+h1{
+    color: #000000;
+    background-color: aliceblue;
+    text-align: center;
+    font-size: 100px;
+
+}
+
+a{
+    color: black;
+}
+
+a:hover{
+    color: red;
+}
+
+.principal{
+    color:beige;
+    list-style: square;
+} 
+
+.principal li{
+    padding-bottom: 10px;
+    border-bottom: dotted 1px;
+    font-size: 30px;
+}
+
