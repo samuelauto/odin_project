@@ -1,0 +1,179 @@
+header,footer{
+    background-color: #1F2937;
+    color: #F9FAF8;
+    font-size: 24px;
+    padding: 15px;
+    display:flex;
+    justify-content: space-between;
+    padding-bottom: 100px;
+}
+
+body{
+    margin:0;
+}
+
+a{
+    text-decoration: none;
+    color:#E5E7EB;
+    padding-right: 4px;
+}
+
+img{
+    width: 100px;
+}
+
+.header_log{
+    display:flex;
+    padding-left: 30px;
+    font-weight: 900;
+    align-items: flex-end;
+}
+
+.header_link{
+    display:flex;
+    font-size:18px;
+    padding-right: 100px;
+    align-items: flex-end;
+}
+
+.introduction{
+    background-color: #1F2937;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+ .introduction_text{
+    padding-left:20px;
+} 
+
+.introduction_text .up{
+    font-size: 48px;
+    color: #F9FAF8;
+    font-weight: 900;
+    width:350px
+}
+
+.introduction_text .mid{
+    font-size: 18px;
+    color:#E5E7EB;
+}
+
+.introduction_text .down{
+    margin-left: 20px;
+    background-color: #3882f6;
+    width: 80px;
+    font-size: 18px;
+    color:#E5E7EB;
+    border-radius: 20px;
+    margin-top: 10px;
+}
+
+.introduction_image{
+    display:flex;
+    padding-right: 110px;
+    width: 300px;
+    height: 50%;
+}
+
+.introduction_image .child{
+    justify-content: flex-end;
+    margin-bottom: 50px;
+}
+
+.information {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.information_text{
+    font-size: 36px;
+    font-weight: 800;
+    color: #1f2937;
+
+}
+
+.gallery{
+    display:flex;
+}
+
+.gallery .child{
+    flex-direction: row;
+    margin: 50px;
+    margin-bottom: -30px;
+    border-style: solid;
+    border-color: red;
+    border-radius: 20px;
+    width: 200px;
+}
+
+.gallery .info{
+    flex-direction: row;
+    justify-content: space-between;
+    border-style: none;
+}
+
+.quote{
+    display:flex;
+    margin-top: 60px;
+    background-color: #E5E7EB;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.quote_text{
+    font-family: 'light italic';
+    font-size: 36px;
+    color:#1F2937;
+    margin-top: 20px;
+    width:400px;
+}
+.quote_person{
+    display:flex;
+    justify-content: flex-end;
+    width:370px;
+}
+
+.action_time{
+    display: flex;
+    margin:50px;
+    justify-content: center;
+}
+
+.action_time .background{
+    background-color: #3882f6;
+    align-items: center;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: -5px;
+    padding-bottom: -5px;
+    border-radius: 5px;
+}
+
+.action_time .info{
+    font-size: 18px;
+    color:#E5E7EB;
+    flex-direction: column;
+    margin:0px;
+}
+
+.action_time .info .down{
+    text-align: end;
+}
+
+.action_time .signup{
+    border-style: solid;
+    border-color: white;
+    border-radius: 10px;
+    padding: 10px 30px;
+}
+
+footer{
+    justify-content: center;
+}
+
+.final{
+    margin-top: 45px;
+}
