@@ -1,0 +1,53 @@
+body{
+    background-color: aquamarine;
+}
+
+#calc{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 95vh;
+    height: 100vh;
+}
+
+#container {
+    display: flex;
+    justify-items: center;
+    background-color: black;
+    border: 10px solid rgba(47,47,47,1);
+    border-radius: 4px;
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: minmax(100px, auto) repeat(5, 80px);
+    gap: 2px;
+    border-radius: 5px;
+    padding-bottom: 10px;
+}
+
+.display{
+    width: 390px;
+    grid-column: 1 / -1;
+    background-color: darkslategrey;
+    align-items: flex-end;
+    justify-content: space-around;
+    margin:5px;
+}
+
+button{
+    width: 80px;               /* Ancho del botón */
+    height: 80px;              /* Altura del botón */
+    border-radius: 50%;        /* Hace el botón redondo */
+    background-color: #4CAF50; /* Color de fondo */
+    color: white;              /* Color del texto */
+    border: none;              /* Sin borde */
+    font-size: 24px;           /* Tamaño del texto o ícono */
+    text-align: center;        /* Centra el texto o ícono */
+    line-height: 50px;         /* Alinea el texto o ícono verticalmente */
+    cursor: pointer;           /* Cursor en forma de mano al pasar el ratón */
+    outline: none;             /* Elimina el contorno que aparece al hacer clic */
+}
+
+button:active{
+    background-color:beige;
+    transform: scale(0.90);
+}
