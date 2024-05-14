@@ -1,8 +1,11 @@
 
-let humanScore = 0
-let computerScore = 0
-let humanSelection
-let computerSelection
+let humanScore = 0;
+let computerScore = 0;
+let humanSelection;
+let computerSelection;
+let buttonId;
+let iterator = 0;
+const buttons = document.querySelectorAll("button");
 
 function getComputerChoice(){
     let choice = Math.floor(Math.random() * 3)
@@ -17,70 +20,88 @@ function getComputerChoice(){
     }
 }
 
-function getHumanChoice() {
-    let choice = prompt("Seleccione su opcion(rock,paper,scissors")
-    selection = choice.toLowerCase()
-    while (true){
-        if (selection !=="rock" && selection!=="paper" && selection !=="scissors"){
-            choice = prompt("eligio mal(rock,paper,scissors")
-        }
-        else{
-            break
-        }
-    }
-    return choice
-}
 
-function playRound(humanSelection,computerSelection){
+buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+        switch(button.id){
+            case "1": humanSelection = 'rock';
+                      iterator++;
+                      playRound();
+            case "2": humanSelection = "paper";
+                      iterator++;
+                      playRound();
+            case "3": humanSelection = "scissors";
+                      iterator++;
+                      playRound();
+        }
+    });
+});
 
-    humanSelection = getHumanChoice()
+
+function playRound(){
+
     computerSelection = getComputerChoice()
     humanSelection = humanSelection.toLowerCase()
 
     if (humanSelection === "rock"){
         switch(computerSelection){
-            case "rock": return "Empate"
+            case "rock": alert("Empate")
             case "paper": computerScore++
-                          return "La computadora escogio papel, gana la computadora"
+                          alert("La computadora escogio papel, gana la computadora")
             case "scissors": humanScore++
-                             return "La computadora escogio tijeras,ganaste"
+                             alert("La computadora escogio tijeras,ganaste")
         }
     }
     else if(humanSelection === "paper"){
         switch(computerSelection){
-            case "paper": return "Empate"
+            case "paper": alert("Empate")
             case "scissors": computerScore++
-                             return "La computadora escogio tijera, gana la computadora"
+                             alert("La computadora escogio tijera, gana la computadora")
             case "rock": humanScore++
-                         return "La computadora escogio piedra, ganaste"
+                         alert("La computadora escogio piedra, ganaste")
         }
     }
     else{
         switch(computerSelection){
-            case "scissors": return "Empate"
+            case "scissors": alert("Empate")
             case "rock": computerScore++
-                         return "La computadora escogio tijera, gana la computadora"
+                         alert("La computadora escogio tijera, gana la computadora")
             case "paper": humanScore++
-                          return "La computadora escogio papel, ganaste"
+                          alert("La computadora escogio papel, ganaste")
         }
     }
 
+    if(iterator === 5){
+        iterator = 0
+        humanPoints = humanScore
+        computerPoints = computerScore
+        humanScore = 0
+        computerScore = 0
+        if (humanPoints > computerPoints){
+            alert("Felicidades eres el ganador con "+ humanPoints.toString()+" puntos")
+        }
+        else if(humanScore<computerPoints){
+            alert("Oh, te ha ganado la computadora con "+ computerPoints.toString()+" puntos")
+        }
+        else{
+            alert("Han quedado empatados con: "+humanPoints.toString()+" puntos")
+        }        
+    }
 }
 
-function playGame() {
-    for (let i = 0; i < 5; i++) {
-        console.log(playRound(humanSelection,computerSelection))   
-    }
-    if (humanScore > computerScore){
-        return "Felicidades eres el ganador con "+humanScore.toString()+" puntos"
-    }
-    else if(humanScore<computerScore){
-        return "Oh, te ha ganado la computadora con "+computerScore.toString()+" puntos"
-    }
-    else{
-        return "Han quedado empatados con: "+humanScore.toString()+" puntos"
-    }
+// function playGame() {
+//     for (let i = 0; i < 5; i++) {
+//         console.log(playRound(humanSelection,computerSelection))   
+//     }
+//     if (humanScore > computerScore){
+//         alert("Felicidades eres el ganador con "+humanScore.toString()+" puntos"
+//     }
+//     else if(humanScore<computerScore){
+//         alert("Oh, te ha ganado la computadora con "+computerScore.toString()+" puntos"
+//     }
+//     else{
+//         alert("Han quedado empatados con: "+humanScore.toString()+" puntos"
+//     }
 
-}
+// }
 
-console.log(playGame())
