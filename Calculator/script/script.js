@@ -16,7 +16,7 @@ const buttons = document.querySelectorAll("button");
 
 function updateDisplay(){
    const display = document.querySelector(".display")
-   display.innerText = displayValue
+   display.innerText = displayValue.toString()
    if(displayValue > 9){
     display.innerText = displayValue.substring(0,9);
    }
@@ -30,7 +30,19 @@ buttons.forEach((button) => {
             inputNumber(button.value);
         }
         else{
-            inputOperand(button.value);
+            switch(button.value){
+                case "back": backOperate();
+                             break;
+                case "clear":clearOperate();
+                             break;
+                case "sign": signOperate();
+                             break;
+                case "dot":  dotOperate();
+                             break;
+                case "equal":equalOperate();
+                             break;
+                default:     inputOperand(button.value)
+            }
         }
     });
 });
@@ -57,53 +69,41 @@ function inputNumber(number) {
         if(displayValue === firstNumber){
             //2do numero
             displayValue = number;
+            secondNumber = displayValue;
             updateDisplay();
         }
         else{
             //2do numero de mas de una cifra
             displayValue+=number;
+            secondNumber = displayValue;
             updateDisplay();
         }
     }
 }
 
 function inputOperand(operand){
-    if(operand === "back" || operand === "clear" || operand === "sign" || operand === "dot" || operand === "equal"){
-        specialButton(operand);
-    }
     if (firstOperand === null){
         firstOperand = operand;
         firstNumber = displayValue;
     }
     //logica de concatenacion de operaciones
     else if(firstOperand !== null && secondOperand === null){
+        //Se obtiene el resultado de la primera operacion y se coge este resultado como el primer numero de la segunda operacion
         secondOperand = operand;
         secondNumber = displayValue;
         result = operation(Number(firstNumber),Number(secondNumber),firstOperand);
-        console.log(result)
-        //displayValue = roundResult(result,15).toString();
-        displayValue = result;
+        displayValue = roundResult(result,15).toString();
         updateDisplay();
         firstNumber = displayValue;
-        //Hasta ese punto se obtuvo el resultado de la primera operacion
     }
-    else if(firstOperand !== null && secondOperand !== null){
+    else{
+        //se obtiene el resultado de la segunda operacion y se coge este resultado como el primer numero de la proxima operacion
         secondNumber = displayValue;
         result = operation(Number(firstNumber),Number(secondNumber),secondOperand);
         displayValue = roundResult(result,15).toString();
         updateDisplay();
         firstNumber = displayValue;
     }
-    else{
-        displayValue = '0';
-        updateDisplay();
-    }
-
-}
-
-
-function specialButton(operand){
-    return "0";
 }
 
 function operation(x,y,op){
@@ -113,6 +113,66 @@ function operation(x,y,op){
         case "*": return x*y;
         case "/": if(y === 0){return "Invalid"} else{return x/y};
         case "%": return (x*y)/100;
+    }
+}
+
+function backOperate(){
+    if(displayValue.length > 1){
+        displayValue = displayValue.slice(0,-1);
+        updateDisplay();
+    }
+    else{
+        displayValue=0;
+        updateDisplay();
+    }
+}
+
+function clearOperate(){
+    displayValue = 0;
+    updateDisplay();
+}
+
+function signOperate(){
+    if(displayValue === 0){
+        updateDisplay();
+    }
+    else{
+        displayValue = Number(displayValue) * (-1);
+        updateDisplay();
+    }
+}
+
+function dotOperate(){
+    if(displayValue.indexOf(".") !== -1){
+        updateDisplay();
+    }
+    else{
+        displayValue = displayValue + ".";
+        updateDisplay();
+    }
+}
+
+function equalOperate(){
+    if(firstOperand === null){
+        updateDisplay();
+    }
+    else if(secondOperand !== null){
+        result = operation(Number(firstNumber),Number(secondNumber),secondOperand);
+        displayValue = roundResult(result,15).toString();
+        firstNumber = displayValue;
+        secondNumber = null;
+        firstOperand = null;
+        secondOperand = null;
+        updateDisplay();
+    }
+    else{//firstOperand !==null and secondOperand === null
+        result = operation(Number(firstNumber),Number(secondNumber),firstOperand);
+        displayValue = roundResult(result,15).toString();
+        firstNumber = displayValue;
+        secondNumber = null;
+        firstOperand = null;
+        secondOperand = null;
+        updateDisplay();
     }
 }
 
