@@ -1,9 +1,13 @@
 
-let humanScore = 0
-let computerScore = 0
-let humanSelection
-let computerSelection
+let humanScore = 0;
+let computerScore = 0;
+let computerSelection;
+let buttonId;
+let iterator = 0;
+const buttons = document.querySelectorAll("button");
 
+
+//LOGICA DE SELECCION DE LA COMPUTADORA
 function getComputerChoice(){
     let choice = Math.floor(Math.random() * 3)
     if (choice === 0){
@@ -17,70 +21,82 @@ function getComputerChoice(){
     }
 }
 
-function getHumanChoice() {
-    let choice = prompt("Seleccione su opcion(rock,paper,scissors")
-    selection = choice.toLowerCase()
-    while (true){
-        if (selection !=="rock" && selection!=="paper" && selection !=="scissors"){
-            choice = prompt("eligio mal(rock,paper,scissors")
+
+buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+        switch(button.id){
+            case "1": playRound("rock");
+                      break;
+            case "2": playRound("paper");
+                      break;
+            case "3": playRound("scissors")
+                      break;
+        }
+    });
+});
+
+
+function playRound(humanSelection){
+    iterator++
+
+    //LOGICA DE SOLAMENTE JUGAR 5 RONDAS
+    if(iterator == 5){
+        iterator = 0
+        humanPoints = humanScore
+        computerPoints = computerScore
+        humanScore = 0
+        computerScore = 0
+        if (humanPoints > computerPoints){
+            alert("Felicidades eres el ganador con "+ humanPoints.toString()+" puntos")
+        }
+        else if(humanScore<computerPoints){
+            alert("Oh, te ha ganado la computadora con "+ computerPoints.toString()+" puntos")
         }
         else{
-            break
-        }
+            alert("Han quedado empatados con: "+humanPoints.toString()+" puntos")
+        }        
     }
-    return choice
-}
 
-function playRound(humanSelection,computerSelection){
-
-    humanSelection = getHumanChoice()
-    computerSelection = getComputerChoice()
-    humanSelection = humanSelection.toLowerCase()
-
-    if (humanSelection === "rock"){
-        switch(computerSelection){
-            case "rock": return "Empate"
-            case "paper": computerScore++
-                          return "La computadora escogio papel, gana la computadora"
-            case "scissors": humanScore++
-                             return "La computadora escogio tijeras,ganaste"
-        }
-    }
-    else if(humanSelection === "paper"){
-        switch(computerSelection){
-            case "paper": return "Empate"
-            case "scissors": computerScore++
-                             return "La computadora escogio tijera, gana la computadora"
-            case "rock": humanScore++
-                         return "La computadora escogio piedra, ganaste"
-        }
-    }
+    //LOGICA DEL JUEGO
     else{
-        switch(computerSelection){
-            case "scissors": return "Empate"
-            case "rock": computerScore++
-                         return "La computadora escogio tijera, gana la computadora"
-            case "paper": humanScore++
-                          return "La computadora escogio papel, ganaste"
+        computerSelection = getComputerChoice()
+        humanSelection = humanSelection.toLowerCase()
+
+        if (humanSelection == "rock"){
+            switch(computerSelection){
+                case "rock": alert("Empate")
+                            break;
+                case "paper": computerScore++
+                            alert("La computadora escogio papel, gana la computadora")
+                            break;
+                case "scissors": humanScore++
+                                alert("La computadora escogio tijeras,ganaste")
+                                break;
+            }
         }
-    }
-
+        else if(humanSelection == "paper"){
+            switch(computerSelection){
+                case "paper": alert("Empate")
+                            break;
+                case "scissors": computerScore++
+                                alert("La computadora escogio tijera, gana la computadora")
+                                break;
+                case "rock": humanScore++
+                            alert("La computadora escogio piedra, ganaste")
+                            break;
+            }
+        }
+        else{ //humanSelection = scissors
+            switch(computerSelection){
+                case "scissors": alert("Empate")
+                                break;
+                case "rock": computerScore++
+                            alert("La computadora escogio piedra, gana la computadora")
+                            break;
+                case "paper": humanScore++
+                            alert("La computadora escogio papel, ganaste")
+                            break;
+            }
+        }
+    }   
 }
-
-function playGame() {
-    for (let i = 0; i < 5; i++) {
-        console.log(playRound(humanSelection,computerSelection))   
-    }
-    if (humanScore > computerScore){
-        return "Felicidades eres el ganador con "+humanScore.toString()+" puntos"
-    }
-    else if(humanScore<computerScore){
-        return "Oh, te ha ganado la computadora con "+computerScore.toString()+" puntos"
-    }
-    else{
-        return "Han quedado empatados con: "+humanScore.toString()+" puntos"
-    }
-
-}
-
-console.log(playGame())
