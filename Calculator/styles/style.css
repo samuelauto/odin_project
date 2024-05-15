@@ -13,6 +13,7 @@ body{
 #container {
     display: flex;
     justify-items: center;
+    flex-direction: column;
     background-color: black;
     border: 10px solid rgba(47,47,47,1);
     border-radius: 4px;
@@ -25,12 +26,19 @@ body{
 }
 
 .display{
+    display:flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    flex-direction: column;
+    font-size: 5em;
     width: 390px;
     grid-column: 1 / -1;
     background-color: darkslategrey;
     align-items: flex-end;
     justify-content: space-around;
     margin:5px;
+    color:white;
+    padding: 5px;
 }
 
 button{
