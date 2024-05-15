@@ -36,33 +36,86 @@ buttons.forEach((button) => {
 });
 
 function inputNumber(number) {
+    //1er numero
     if(firstOperand === null){
         if(displayValue === 0 || displayValue === '0'){
             displayValue = number;
             updateDisplay();
         }
-        //2do numero luego de decir que operacion fue
+        //Concatenacion de Operacion,el result pasa a ser firstNumber
         else if(displayValue===firstNumber){
         displayValue = number;
         updateDisplay();
         }
         else{
+        //1er numero de mas de una cifra
         displayValue+=number;
         updateDisplay();
         }
     }
     else{
-
+        if(displayValue === firstNumber){
+            //2do numero
+            displayValue = number;
+            updateDisplay();
+        }
+        else{
+            //2do numero de mas de una cifra
+            displayValue+=number;
+            updateDisplay();
+        }
     }
 }
 
+function inputOperand(operand){
+    if(operand === "back" || operand === "clear" || operand === "sign" || operand === "dot" || operand === "equal"){
+        specialButton(operand);
+    }
+    if (firstOperand === null){
+        firstOperand = operand;
+        firstNumber = displayValue;
+    }
+    //logica de concatenacion de operaciones
+    else if(firstOperand !== null && secondOperand === null){
+        secondOperand = operand;
+        secondNumber = displayValue;
+        result = operation(Number(firstNumber),Number(secondNumber),firstOperand);
+        console.log(result)
+        //displayValue = roundResult(result,15).toString();
+        displayValue = result;
+        updateDisplay();
+        firstNumber = displayValue;
+        //Hasta ese punto se obtuvo el resultado de la primera operacion
+    }
+    else if(firstOperand !== null && secondOperand !== null){
+        secondNumber = displayValue;
+        result = operation(Number(firstNumber),Number(secondNumber),secondOperand);
+        displayValue = roundResult(result,15).toString();
+        updateDisplay();
+        firstNumber = displayValue;
+    }
+    else{
+        displayValue = '0';
+        updateDisplay();
+    }
 
+}
+
+
+function specialButton(operand){
+    return "0";
+}
 
 function operation(x,y,op){
     switch(op){
         case "+": return x+y;
         case "-": return x-y;
         case "*": return x*y;
-        case "/": if(y === 0){return "Invalid"} else{return x/y}
+        case "/": if(y === 0){return "Invalid"} else{return x/y};
+        case "%": return (x*y)/100;
     }
+}
+
+function roundResult(num,places){
+    return parseFloat(Math.round(num + 'e' + places) + 'e-' + places);
 }
