@@ -1,0 +1,47 @@
+body{
+    background-color: aquamarine;
+}
+
+#books-section{
+    display: grid;
+    grid-gap: 10px; /* Espaciado entre los ítems del grid */
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    /* Ajusta '150px' al tamaño mínimo de los ítems que prefieras */
+    padding: 10px;
+}
+
+.Book{
+    background: lightblue; /* Color de fondo para los ítems del grid */
+    padding: 20px; /* Espaciado interno en los ítems */
+    text-align: center; /* Centrado del texto dentro de los ítems */
+    border: 1px solid #ccc; /* Bordes de los ítems */
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+#dialog {
+    background-color: burlywood;
+    border: none; /* Elimina el borde por defecto */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Agrega sombra para un efecto elevado */
+    position: fixed; /* Posición fija en la página */
+    left: 0; /* Centrado en la pagina horizontalmente*/
+    top: 50%; /* Centrado verticalmente */
+    transform: translateY(-50%); /* Ajuste fino para centrar exactamente */
+    width: 20%; /* Ancho mínimo del diálogo */
+    height: 35%; /* Ancho máximo para evitar que sea demasiado grande */
+    /*z-index: 1000; /* Asegura que el diálogo esté por encima de otros elementos */
+    /*padding: 20px; /* Espaciado interno para el contenido */
+    margin:none;
+  }
+
+li{
+    margin:5px;
+    border:none;
+}
+
+button{
+    border-radius: 5px;
+    background-color: cornsilk;
+    font-family: 'Times New Roman', Times, serif;
+}

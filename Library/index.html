@@ -4,8 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
+    <link rel="stylesheet" type="text/css" href="./styles/style.css">
+    <script src="./script/script.js" defer></script>
 </head>
 <body>
+
+    <div id="books-section">
+        <!-- Esta es la seccion donde se veran los libros de la liberia-->
+    </div>
+
+    <button id="New-Book">New Book</button>
+
+    <dialog id="dialog">
+        <form>
+            <ul>
+                <li>
+                    <label for="title">Title</label>
+                    <input type="text" id="title" name="title" placeholder="Song of Ice and Fire" autocomplete="false" required>
+                </li>
+                <li>
+                    <label for="author">Author</label>
+                    <input type="text" id="author" name="author" placeholder="George R.R Martin" autocomplete="false" required>
+                </li>
+                <li>
+                    <label for="pages">Pages</label>
+                    <input type="number" id="pages" name="pages" required placeholder="1000">
+                </li>
+                <li>
+                    <label for="read">Read?</label>
+                    <input type="checkbox" id="read" name="acuerdo" >
+                </li>
+            </ul>    
+        </form>
+        <button class="save" type="submit">Save</button>
+        <button id="exit">Close</button>
+    </dialog>
     
 </body>
 </html>
